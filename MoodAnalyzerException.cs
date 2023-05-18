@@ -3,21 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace MoodAnalyserProblem
 {
     internal class MoodAnalyzerException:Exception
     {
-        public enum ExceptionType
+        public MoodAnalyzerException(string message) : base(message)
         {
-            NULL_MOOD,
-            EMPTY_MOOD
-        }
-
-        public ExceptionType Type { get; }
-        public MoodAnalyzerException(string message, ExceptionType type) : base(message)
-        {
-            Type = type;
         }
     }
 }

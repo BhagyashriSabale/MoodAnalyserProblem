@@ -22,14 +22,9 @@ namespace MoodAnalyserProblem
         {
             try
             {
-                if (message == null)
+                if (message == null || message.Trim().Equals(""))
                 {
-                    throw new MoodAnalyzerException("Invalid mood: Mood cannot be null", MoodAnalyzerException.ExceptionType.NULL_MOOD);
-                }
-
-                if (message.Trim().Equals(""))
-                {
-                    throw new MoodAnalyzerException("Invalid mood: Mood cannot be empty", MoodAnalyzerException.ExceptionType.EMPTY_MOOD);
+                    throw new MoodAnalyzerException("Invalid mood: Mood cannot be null or empty");
                 }
 
                 if (message.Contains("Sad"))
