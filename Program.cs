@@ -6,11 +6,11 @@
         {
             Console.WriteLine("Welcome Mood Analyser Problem");
 
-            MoodAnalyser moodAnalyser1 = MoodAnalyzerFactory.CreateMoodAnalyzerObject("MoodAnalyzer");
-            Console.WriteLine(moodAnalyser1.Equals(new MoodAnalyser()));
+            MoodAnalyser moodAnalyser1 = MoodAnalyzerFactory.CreateMoodAnalyzerObject("I am in Sad Mood");
+            Console.WriteLine(moodAnalyser1.Equals(new MoodAnalyser("I am in Sad Mood")));
             try
             {
-                MoodAnalyser moodAnalyser2 = MoodAnalyzerFactory.CreateMoodAnalyzerObject("InvalidClassName");
+                MoodAnalyser moodAnalyser2 = MoodAnalyzerFactory.CreateMoodAnalyzerObject("I am in Sad Mood");
             }
             catch (MoodAnalyzerException ex)
             {
@@ -18,11 +18,11 @@
             }
             try
             {
-                MoodAnalyser moodAnalyser3 = MoodAnalyzerFactory.CreateMoodAnalyzerObject("MoodAnalyzerWithParam");
+                MoodAnalyser moodAnalyzer3 = MoodAnalyzerFactory.CreateMoodAnalyzerObject(" ");
             }
             catch (MoodAnalyzerException ex)
             {
-                Console.WriteLine("Exception: " + ex.Message); 
+                Console.WriteLine("Exception: " + ex.Message); // Output: No parameterized constructor found
             }
         }
     }

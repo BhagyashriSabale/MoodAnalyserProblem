@@ -20,10 +20,10 @@ namespace MoodAnalyserProblem
                     throw new MoodAnalyzerException("No such class found");
                 }
 
-                ConstructorInfo constructor = type.GetConstructor(Type.EmptyTypes);
+                ConstructorInfo constructor = type.GetConstructor(new[] { typeof(string) });
                 if (constructor == null)
                 {
-                    throw new MoodAnalyzerException("No default constructor found");
+                    throw new MoodAnalyzerException("No parameterized constructor found");
                 }
 
                 MoodAnalyser moodAnalyser = (MoodAnalyser)constructor.Invoke(null);
