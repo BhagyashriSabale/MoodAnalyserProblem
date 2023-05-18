@@ -6,23 +6,17 @@
         {
             Console.WriteLine("Welcome Mood Analyser Problem");
 
-            MoodAnalyser moodAnalyser1 = MoodAnalyzerFactory.CreateMoodAnalyzerObject("I am in Sad Mood");
-            Console.WriteLine(moodAnalyser1.Equals(new MoodAnalyser("I am in Sad Mood")));
+            MoodAnalyser moodAnalyzer1 = MoodAnalyzerFactory.CreateMoodAnalyzerObject("I am in Happy Mood");
+            string mood1 = MoodAnalyzerFactory.InvokeAnalyzeMoodMethod(moodAnalyzer1, "AnalyzeMood");
+            Console.WriteLine(mood1);
             try
             {
-                MoodAnalyser moodAnalyser2 = MoodAnalyzerFactory.CreateMoodAnalyzerObject("I am in Sad Mood");
+                MoodAnalyser moodAnalyzer2 = MoodAnalyzerFactory.CreateMoodAnalyzerObject("I am in Happy Mood");
+                string mood2 = MoodAnalyzerFactory.InvokeAnalyzeMoodMethod(moodAnalyzer2, "InvalidMethodName");
             }
             catch (MoodAnalyzerException ex)
             {
-                Console.WriteLine("Exception: " + ex.Message); 
-            }
-            try
-            {
-                MoodAnalyser moodAnalyzer3 = MoodAnalyzerFactory.CreateMoodAnalyzerObject(" ");
-            }
-            catch (MoodAnalyzerException ex)
-            {
-                Console.WriteLine("Exception: " + ex.Message); // Output: No parameterized constructor found
+                Console.WriteLine("Exception: " + ex.Message); // Output: No such method found
             }
         }
     }

@@ -34,5 +34,23 @@ namespace MoodAnalyserProblem
                 throw new MoodAnalyzerException("Error creating MoodAnalyser object: " + ex.Message);
             }
         }
+        public static string InvokeAnalyzeMoodMethod(MoodAnalyser moodAnalyzer, string methodName)
+        {
+            try
+            {
+                Type type = typeof(MoodAnalyser);
+                MethodInfo method = type.GetMethod(methodName);
+                if (method == null)
+                {
+                    throw new MoodAnalyzerException("No such method found");
+                }
+
+                return (string)method.Invoke(moodAnalyzer, null);
+            }
+            catch (Exception ex)
+            {
+                throw new MoodAnalyzerException("Error invoking AnalyzeMood method: " + ex.Message);
+            }
+        }
     }
 }
