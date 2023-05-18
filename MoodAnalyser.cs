@@ -9,6 +9,10 @@ namespace MoodAnalyserProblem
     internal class MoodAnalyser
     {
         private string message;
+        public MoodAnalyser()
+        {
+            message = "";
+        }
 
         public MoodAnalyser(string message)
         {
