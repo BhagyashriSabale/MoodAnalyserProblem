@@ -24,7 +24,12 @@ namespace MoodAnalyserProblem
             {
                 if (message == null)
                 {
-                    throw new MoodAnalyzerException("Invalid mood");
+                    throw new MoodAnalyzerException("Invalid mood: Mood cannot be null", MoodAnalyzerException.ExceptionType.NULL_MOOD);
+                }
+
+                if (message.Trim().Equals(""))
+                {
+                    throw new MoodAnalyzerException("Invalid mood: Mood cannot be empty", MoodAnalyzerException.ExceptionType.EMPTY_MOOD);
                 }
 
                 if (message.Contains("Sad"))
@@ -36,8 +41,9 @@ namespace MoodAnalyserProblem
                     return "HAPPY";
                 }
             }
-            catch (MoodAnalyzerException)
+            catch (MoodAnalyzerException ex)
             {
+                Console.WriteLine("Exception: " + ex.Message);
                 return "HAPPY";
             }
         }

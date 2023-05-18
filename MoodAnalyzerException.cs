@@ -8,8 +8,16 @@ namespace MoodAnalyserProblem
 {
     internal class MoodAnalyzerException:Exception
     {
-        public MoodAnalyzerException(string message) : base(message)
+        public enum ExceptionType
         {
+            NULL_MOOD,
+            EMPTY_MOOD
+        }
+
+        public ExceptionType Type { get; }
+        public MoodAnalyzerException(string message, ExceptionType type) : base(message)
+        {
+            Type = type;
         }
     }
 }
