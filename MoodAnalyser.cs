@@ -22,6 +22,11 @@ namespace MoodAnalyserProblem
         {
             try
             {
+                if (message == null)
+                {
+                    throw new MoodAnalyzerException("Invalid mood");
+                }
+
                 if (message.Contains("Sad"))
                 {
                     return "SAD";
@@ -31,9 +36,9 @@ namespace MoodAnalyserProblem
                     return "HAPPY";
                 }
             }
-            catch (NullReferenceException)
+            catch (MoodAnalyzerException)
             {
-                throw new MoodAnalyzerException("Message cannot be null");
+                return "HAPPY";
             }
         }
     }
